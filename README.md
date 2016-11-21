@@ -92,7 +92,7 @@ Writing CONFIGS/mountdata
 
 Then, install OST:
 
-[root@new-host Downloads]# mkfs.lustre --ost  --fsname=mylustre --mgsnode=192.168.1.5  --index=1  /dev/sdc /dev/sdd
+[root@new-host Downloads]# mkfs.lustre --ost  --fsname=mylustre --mgsnode=192.168.1.5  --index=1  /dev/sdc
 
 >   Permanent disk data:
 
@@ -130,6 +130,19 @@ Writing CONFIGS/mountdata
 
 Looks like everything is fine, then I can try to start my Lustre server.
 
+Befote start, let's add the following lines in to /etc/ldev.conf:
+
+>new-host  - mylustre-MDT0000 /dev/sdb
+
+>new-host  - mylustre-OST0001 /dev/sdc
+
+Also,  file /etc/modprobe.d/lustre.conf:
+
+>options lnet networks="tcp0(wlp4s0)"
+
+Here wlp4s0 is my wireless NIC.
+
+Now start Lustre  storage system.
 
 >[root@new-host Downloads]# systemctl start lustre
 
@@ -313,6 +326,14 @@ Looks OK.
 
 >filesystem summary:        14.0G       41.1M       13.2G   0% /mylustre
 
+
+Befote start, let's add the following lines in to /etc/ldev.conf:
+
+>new-host  - mylustre-MDT0000 zfs:zfspool/mds
+
+>new-host  - mylustre-OST0001 zfs:zfspoolost/ost
+
+The file /etc/modprobe.d/lustre.conf should be the same as above.
 
 Now, start it:
 
