@@ -354,6 +354,8 @@ Now, start it:
 
 >[root@new-host feng]# systemctl restart lustre
 
+If no error message, that means the Lustre storage, MDT and OSt services have been started succefully. Let's check:
+
 >[root@new-host feng]# df -h
 
 >Filesystem      Size  Used Avail Use% Mounted on
@@ -366,7 +368,7 @@ Now, start it:
 
 >zfspoolost/ost   29G  1.8M   29G   1% /mnt/lustre/local/mylustre-OST0001
 
-So, I can mount it now(the fstab is the same as above).
+It is good, the MDT and OST storages have been mounted locally. Now, I can mount it now(the fstab is the same as above).
 
 
 >[root@new-host Downloads]# mount /mylustre/
