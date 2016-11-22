@@ -1,7 +1,7 @@
 # lustre-zfs-centos7
 Install Lustre on CentOS 7, with backfstype of zfs
 
-The following lists the steps I used to install Lustre 2.8 and zfs-0.6.4.2 on CentOS Linux release 7.2.1511 (Core).I installed MDT and OST services on a single computer, my laptop, with USB drives as device. NO Guarrantee!
+The following lists the steps I used to install Lustre 2.8 and zfs-0.6.4.2 on CentOS Linux release 7.2.1511 (Core). I installed MDT and OST services on a single computer, my laptop, with USB drives as devices. NO Guarrantee!
 
 After the whole installation process, the kernel should have been then upgraded to:
 >[root@new-host feng]# uname -a
