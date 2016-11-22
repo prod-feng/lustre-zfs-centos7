@@ -62,7 +62,15 @@ Other packages I installed include:
 >]#rpm -ivh e2fsprogs-1.42.13.wc5-7.el7.x86_64.rpm e2fsprogs-libs-1.42.13.wc5-7.el7.x86_64.rpm libcom_err-1.42.13.wc5-7.el7.x86_64.rpm libss-1.42.13.wc5-7.el7.x86_64.rpm
 
 
-If everything goes well, the Lustre and ZFS should work.
+If everything goes well, the Lustre and ZFS should work. Run command:
+
+>]#lsmod |grep lustre
+
+to check wheter Lustre module has been loaded into the kernel. If not, run:
+
+>]#modprobe lustre
+
+to load Lustre module.
 
 4). Make lustre storage with LDISKFS.
 
