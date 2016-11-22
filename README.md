@@ -45,7 +45,7 @@ or
 
 >]#zpool list
 
-to chekc whether ZFS works fine. Since no ZFS storage has been made, it supposed not to print out anything yet, and that's fine.
+to chekc whether ZFS works fine. Since no ZFS storage has been made yet, it supposed not to print out anything, and that's fine.
 
 3). Install Lustre packages.
 
