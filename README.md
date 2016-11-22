@@ -1,9 +1,9 @@
 # lustre-zfs-centos7
 Install Lustre on CentOS 7, with backfstype of zfs
 
-The following lists the steps I used to install Lustre 2.8 on CentOS Linux release 7.2.1511 (Core).NO Guarrantee!
+The following lists the steps I used to install Lustre 2.8 and zfs-0.6.4.2 on CentOS Linux release 7.2.1511 (Core).I installed MDT and OST services on a single computer, my laptop, with USB drives as device. NO Guarrantee!
 
-After the whole installation process, the kernel is then upgraded to:
+After the whole installation process, the kernel should have been then upgraded to:
 >[root@new-host feng]# uname -a
 >Linux new-host 3.10.0-327.3.1.el7_lustre.x86_64 #1 SMP Thu Feb 18 10:53:23 PST 2016 x86_64 x86_64 x86_64 GNU/Linux
 
@@ -27,16 +27,29 @@ After completion, reboot to the new  kernel.
 
 The ZFS packages and information can be found here: http://zfsonlinux.org/. I chose DKMS package, as described here: https://github.com/zfsonlinux/zfs/wiki/RHEL-%26-CentOS
 
-The RPM packages of most recent version zfs-0.6.5.8 seems do not work well with Lustre 2.8(Can not load osd-zfs module, so can not start Lustre at the end). Maybe rebuild the RPMs can solve the problem, but I chose to install an older versio: zfs-0.6.4.2.
+The RPM packages of most recent version zfs-0.6.5.8 seems do not work well with Lustre 2.8(Can not load osd-zfs module, so can not start Lustre at the end). Maybe rebuild the ZFS RPMs can solve the problem, but I chose to install an older versio: zfs-0.6.4.2.
 
-After setting as recommended, it's time to install zfs:
+After setting as recommended, it's time to install ZFS:
 
 >]#yum install zfs-0.6.4.2
 
+If everything goes fine, your can run ZFS stuffs now. One can verify:
+
+>]# lsmod |grep zfs
+
+to see if the module has been loaded to the kernel. If so, run:
+
+>]# zpool status
+
+or
+
+>]#zpool list
+
+to chekc whether ZFS works fine. Since noe ZFS storage has been made, it supposed to print out anything yet, and that's fine.
 
 3). Install Lustre packages.
 
-I chose to install ZFS on step 2 because some of Lustre packages need ZFS.
+I chose to install ZFS on step 2 because some of Lustre packages need ZFS. Now install Lustre packages:
 
 >]#rpm -ivh lustre-2.8.0-3.10.0_327.3.1.el7_lustre.x86_64.x86_64.rpm  lustre-modules-2.8.0-3.10.0_327.3.1.el7_lustre.x86_64.x86_64.rpm lustre-osd-zfs-2.8.0-3.10.0_327.3.1.el7_lustre.x86_64.x86_64.rpm lustre-osd-zfs-mount-2.8.0-3.10.0_327.3.1.el7_lustre.x86_64.x86_64.rpm
 
@@ -51,7 +64,8 @@ Other packages I installed include:
 
 If everything goes well, the Lustre and ZFS should work.
 
-4). Make lustre storage.
+4). Make lustre storage with LDISKFS.
+
 First I used the most regular LDSIKFS to make the storage:
 
 >]#mkfs.lustre --mdt --mgs  --fsname=mylustre  --index=0  /dev/sdb
@@ -136,7 +150,7 @@ Befote start, let's add the following lines in to /etc/ldev.conf:
 
 >new-host  - mylustre-OST0001 /dev/sdc
 
-Also,  file /etc/modprobe.d/lustre.conf:
+Also,  in file /etc/modprobe.d/lustre.conf:
 
 >options lnet networks="tcp0(wlp4s0)"
 
@@ -146,10 +160,7 @@ Now start Lustre  storage system.
 
 >[root@new-host Downloads]# systemctl start lustre
 
-If no error message, then it's a good sign. Now let me check the Lustre server status.
-
-
-OK, it's working. Then you should see the local mount of the MDT and OST:
+If no error message, then it's a good sign. Now let me check the Lustre server status. I can see the local mount of the MDT and OST:
 
 >[root@new-host Downloads]# df -h
 
@@ -163,13 +174,11 @@ OK, it's working. Then you should see the local mount of the MDT and OST:
 
 >
 
->/dev/sdc         15G   42M   14G   1% /tmp/mntUGdtaW
-
 >/dev/sdb         11G   46M  9.5G   1% /mnt/lustre/local/mylustre-MDT0000
 
 >/dev/sdc         15G   42M   14G   1% /mnt/lustre/local/mylustre-OST0001
 
-Now I can mount the Luster storage. Since I am trying to mount it on the server, I do not need the cliet software yet.
+OK, it's working. Now I can mount the Luster storage. Since I am trying to mount it on the server, I do not need the cliet software yet.
 
 First, add one line to /etc/fstab file:
 
@@ -183,8 +192,6 @@ Now mount it:
 
 > ...
 
->/dev/sdc                    15G   42M   14G   1% /tmp/mntUGdtaW
-
 >/dev/sdb                    11G   46M  9.5G   1% /mnt/lustre/local/mylustre-MDT0000
 
 >/dev/sdc                    15G   42M   14G   1% /mnt/lustre/local/mylustre-OST0001
@@ -193,7 +200,7 @@ Now mount it:
 
 Greate, it'sworking.
 
-Now I stop the Lsutre storage to go to next step: with ZFS
+Now I stop the Lsutre storage to go to next step: Lustre with ZFS.
 
 >]#systemctl stop lustre
  
