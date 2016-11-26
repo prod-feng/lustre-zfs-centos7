@@ -13,7 +13,7 @@ The hard drives I used are actually 3(three) 16GB USB drive,  connected to my co
 
 First you need to patch your kernel with Lustre patches. You can find the RPM packages for server and client here: https://downloads.hpdd.intel.com/public/lustre/latest-feature-release/
 
-You can also find what kind os packaged need to install on server/client from here: https://build.hpdd.intel.com/job/lustre-manual/lastSuccessfulBuild/artifact/lustre_manual.xhtml#table_cnh_5m3_gk
+You can also find what kind of packages needed to install on server/client from here: https://build.hpdd.intel.com/job/lustre-manual/lastSuccessfulBuild/artifact/lustre_manual.xhtml#table_cnh_5m3_gk
 
 After you download the needed RPM packages, your can start:
 
