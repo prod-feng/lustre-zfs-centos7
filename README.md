@@ -9,13 +9,12 @@ After the whole installation process, the kernel should have been then upgraded 
 
 The orignal kernel on my laptop is 3.10.0-123.el7.x86_64.
 
-The hard drives I used are actually 3(three) 16GB USB drive,  connected to my computer with a USB hub with 7 ports, which work fine.
+The hard drives I used are actually 3(three) 16GB USB drives,  connected to my computer with a USB hub with 7 ports, which work fine.
 
-First you need to patch your kernel with Lustre patches. You can find the RPM packages for server and client here: https://downloads.hpdd.intel.com/public/lustre/latest-feature-release/
+First the Linux kernel needs to be updated with Lustre patches. The RPM packages for server and client can be found here: https://downloads.hpdd.intel.com/public/lustre/latest-feature-release/
 
-You can also find what kind of packages needed to install on server/client from here: https://build.hpdd.intel.com/job/lustre-manual/lastSuccessfulBuild/artifact/lustre_manual.xhtml#table_cnh_5m3_gk
+The list of packages needed to install on server/client from here: https://build.hpdd.intel.com/job/lustre-manual/lastSuccessfulBuild/artifact/lustre_manual.xhtml#table_cnh_5m3_gk
 
-After you download the needed RPM packages, your can start:
 
 1). Install Lustre patched kernel:
 
