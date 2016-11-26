@@ -207,7 +207,7 @@ Now mount it:
 
 Greate, it'sworking.
 
-Now I stop the Lsutre storage to go to next step: Lustre with ZFS.
+Now I stop the Lustre storage to go to next step: Lustre with ZFS.
 
 >]#systemctl stop lustre
  
@@ -267,7 +267,7 @@ Now, OST:
 
 >
 
->       Permanent disk data:
+>  Permanent disk data:
 
 >Target:     mylustre:OST0001
 
@@ -279,7 +279,7 @@ Now, OST:
 
 >Flags:      0x62
 
->               (OST first_time update )
+>   (OST first_time update )
 
 >Persistent mount opts:
 
@@ -311,11 +311,7 @@ Now, OST:
 Looks like everything is fine, then I can try to start my Lustre server.
 
 
->[root@new-host Downloads]# systemctl start lustre
-
-If no error message, then it's a good sign. Now let me check the Lustre server status.
-
-Also, we can check the ZFS status and Lustre status as:
+Now I can check the ZFS status and Lustre status as:
 
 >[root@new-host Downloads]# zpool list
 
