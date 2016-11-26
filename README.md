@@ -16,13 +16,13 @@ First the Linux kernel needs to be updated with Lustre patches. The RPM packages
 The list of packages needed to install on server/client from here: https://build.hpdd.intel.com/job/lustre-manual/lastSuccessfulBuild/artifact/lustre_manual.xhtml#table_cnh_5m3_gk
 
 
-1). Install Lustre patched kernel:
+#1). Install Lustre patched kernel:
 
 >]#rpm -ivh kernel-3.10.0-327.3.1.el7_lustre.x86_64.rpm
 
 After completion, reboot to the new  kernel.
 
-2). Install ZFS package.
+#2). Install ZFS package.
 
 The ZFS packages and information can be found here: http://zfsonlinux.org/. I chose DKMS package, as described here: https://github.com/zfsonlinux/zfs/wiki/RHEL-%26-CentOS
 
@@ -46,7 +46,7 @@ or
 
 to chekc whether ZFS works fine. Since no ZFS storage has been made yet, it supposes not to print out anything, and that's fine.
 
-3). Install Lustre packages.
+#3). Install Lustre packages.
 
 I chose to install ZFS on step 2 because some of Lustre packages need ZFS. Now install Lustre packages:
 
@@ -71,7 +71,7 @@ to check wheter Lustre module has been loaded into the kernel. If not, run:
 
 to load Lustre module.
 
-4). Make lustre storage with LDISKFS.
+#4). Make lustre storage with LDISKFS.
 
 First I used the most regular LDSIKFS to make the storage:
 
@@ -212,7 +212,7 @@ Now I stop the Lustre storage to go to next step: Lustre with ZFS.
 >]#systemctl stop lustre
  
  
- 5). Install Lustre Storage usingg ZFS.
+ #5). Install Lustre Storage usingg ZFS.
  
 Make MDT:
  
