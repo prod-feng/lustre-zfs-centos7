@@ -212,7 +212,7 @@ Now I stop the Lustre storage to go to next step: Lustre with ZFS.
 >]#systemctl stop lustre
  
  
- #5). Install Lustre Storage usingg ZFS.
+#5). Install Lustre Storage usingg ZFS.
  
 Make MDT:
  
