@@ -232,7 +232,7 @@ Make MDT:
 
 >Flags:      0x65
 
->           (MDT MGS first_time update )
+>   (MDT MGS first_time update )
 
 >Persistent mount opts:
 
