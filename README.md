@@ -32,7 +32,7 @@ After setting as recommended, it's time to install ZFS:
 
 >]#yum install zfs-0.6.4.2
 
-If everything goes fine, your can run ZFS stuffs now. One can verify:
+If everything goes fine, the ZFS should work now. Run following commands to verify:
 
 >]# lsmod |grep zfs
 
@@ -44,7 +44,7 @@ or
 
 >]#zpool list
 
-to chekc whether ZFS works fine. Since no ZFS storage has been made yet, it supposed not to print out anything, and that's fine.
+to chekc whether ZFS works fine. Since no ZFS storage has been made yet, it supposes not to print out anything, and that's fine.
 
 3). Install Lustre packages.
 
