@@ -24,7 +24,7 @@ After completion, reboot to the new  kernel.
 
 #2). Install ZFS package.
 
-The ZFS packages and information can be found here: http://zfsonlinux.org/. I chose DKMS package, as described here: https://github.com/zfsonlinux/zfs/wiki/RHEL-%26-CentOS
+The ZFS packages and information can be found here: http://zfsonlinux.org/. I chose DKMS package, as described here: https://openzfs.github.io/openzfs-docs/Developer%20Resources/Custom%20Packages.html
 
 The RPM packages of most recent version zfs-0.6.5.8 seems do not work well with Lustre 2.8(Can not load osd-zfs module, so can not start Lustre at the end). Maybe rebuild the Lustre osd-zfs RPMs can solve the problem, but I chose to install an older versio: zfs-0.6.4.2.
 
